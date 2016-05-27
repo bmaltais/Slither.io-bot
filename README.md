@@ -29,13 +29,10 @@ https://youtu.be/QF9JBMi-fLo?t=38s - Created by SeppeTutorials
 https://youtu.be/IpsAazbVIcw - Created by TheFlyingPlatypus
 
 ## Text tutorial
-If you are on chrome, download the [TamperMonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) extension.
+If you are on a GUI browser, create a bookmarklet called SlitherBot with:
+javascript:with(document)(head.appendChild(createElement('script')).src='//cdn.rawgit.com/alexxroche/Slither.io-bot/master/bot.user.js')._
 
-On other browsers, use the [GreaseMonkey](https://addons.mozilla.org/en-GB/firefox/addon/greasemonkey/) extension.
-
-Once installed, click on [this](https://github.com/ErmiyaEskandary/slither.io-bot/raw/master/bot.user.js), and choose **Install**.
-
-Go to [slither.io](http://slither.io/), and enjoy !
+Go to [slither.io](http://slither.io/), click the bookmarklet and enjoy !
 
 # Hotkeys
 
