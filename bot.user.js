@@ -4,6 +4,10 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+/* 20160527 created bookmarklet so that we 
+    don't have to monkey about
+*/
+version='1.2.0_bookmarklet'
 // ==UserScript==
 // @name         Slither.io-bot
 // @namespace    http://slither.io/
@@ -1131,7 +1135,7 @@ var userInterface = window.userInterface = (function () {
             var oContent = [];
             var ht = userInterface.handleTextColor;
 
-            oContent.push('version: ' + GM_info.script.version);
+            oContent.push('version: ' + version);
             oContent.push('[T / Right click] bot: ' + ht(bot.isBotEnabled));
             oContent.push('[O] mobile rendering: ' + ht(window.mobileRender));
             oContent.push('[A/S] radius multiplier: ' + bot.opt.radiusMult);
