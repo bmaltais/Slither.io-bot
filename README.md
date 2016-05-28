@@ -19,14 +19,6 @@ Goal : make a bot for slither.io
 
 [Guide](https://alexxroche.github.io/Slither.io-bot/)
 
-## Text tutorial
-If you are on a GUI browser, create a bookmarklet called SlitherBot with:
-javascript:with(document)(head.appendChild(createElement('script')).src='//cdn.rawgit.com/alexxroche/Slither.io-bot/master/bot.min.js')._
-
-Go to [slither.io](http://slither.io/), click the bookmarklet and enjoy !
-
-N.B. Mobile rendering no longer removed the background image, in bot.min.js (though it does still remove the snakeskins).
-
 # Hotkeys
 
 Key | Result
