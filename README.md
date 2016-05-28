@@ -16,17 +16,8 @@ Goal : make a bot for slither.io
 - [License](https://github.com/ErmiyaEskandary/Slither.io-bot#license)
 
 # Installation instructions
-## Interactive tutorial
-http://slither.jlynx.net/
 
-## Visual tutorial
-https://www.youtube.com/watch?v=d7mkAgQNuCA - Created by http://slither.jlynx.net/
-
-https://youtu.be/mlEKp-ZAi7w - Created by http://slithere.com/
-
-https://youtu.be/QF9JBMi-fLo?t=38s - Created by SeppeTutorials
-
-https://youtu.be/IpsAazbVIcw - Created by TheFlyingPlatypus
+[Guide](https://alexxroche.github.io/Slither.io-bot/)
 
 ## Text tutorial
 If you are on a GUI browser, create a bookmarklet called SlitherBot with:
@@ -54,7 +45,6 @@ Mouse wheel | Zoom in/out
 # Contributing
 
 To get started, please sign the [Contributor License Agreement](https://cla-assistant.io/ErmiyaEskandary/Slither.io-bot).
-
 
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/ErmiyaEskandary/Slither.io-bot/compare/). **Please review the guidelines for contributing to this project before making an issue or submitting a pull request.Your pull request needs to be approved by at least 3 people until it is merged and all checks need to pass.**
 
