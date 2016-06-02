@@ -1201,7 +1201,7 @@ var userInterface = window.userInterface = (function() {
                 window.render_mode = 1;
                 window.want_quality = 0;
                 window.high_quality = false;
-                canvasUtil.setBackground('/s/');
+                window.ii.src = '';
             } else {
                 window.render_mode = 2;
                 window.want_quality = 1;
