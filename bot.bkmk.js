@@ -1207,12 +1207,10 @@ var userInterface = window.userInterface = (function() {
                 window.render_mode = 1;
                 window.want_quality = 0;
                 window.high_quality = false;
-                canvasUtil.setBackground('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
             } else {
                 window.render_mode = 2;
                 window.want_quality = 1;
                 window.high_quality = true;
-                canvasUtil.setBackground();
             }
         },
 
@@ -1362,7 +1360,9 @@ var userInterface = window.userInterface = (function() {
                 y: window.mc.height / window.hh
             };
         },
-
+        // Handles the text color of the bot preferences
+        // enabled = green
+        // disabled = red
         handleTextColor: function(enabled) {
             return '<span style=\"color:' +
                 (enabled ? 'green;\">enabled' : 'red;\">disabled') + '</span>';
