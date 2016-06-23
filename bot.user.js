@@ -11,7 +11,7 @@ version='1.2.0_bookmarklet'
 // ==UserScript==
 // @name         Slither.io-bot
 // @namespace    http://slither.io/
-// @version      1.2.6
+// @version      1.2.9
 // @description  Slither.io bot
 // @author       Ermiya Eskandary & Théophile Cailliau
 // @match        http://slither.io/
@@ -131,29 +131,35 @@ var canvasUtil = window.canvasUtil = (function() {
 
         // Constructor for point type
         point: function(x, y) {
-            return {
+            var p = {
                 x: Math.round(x),
                 y: Math.round(y)
             };
+
+            return p;
         },
 
         // Constructor for rect type
         rect: function(x, y, w, h) {
-            return {
+            var r = {
                 x: Math.round(x),
                 y: Math.round(y),
                 width: Math.round(w),
                 height: Math.round(h)
             };
+
+            return r;
         },
 
         // Constructor for circle type
         circle: function(x, y, r) {
-            return {
+            var c = {
                 x: Math.round(x),
                 y: Math.round(y),
                 radius: Math.round(r)
             };
+
+            return c;
         },
 
         // Fast atan2
@@ -455,7 +461,7 @@ var bot = window.bot = (function() {
             canvasUtil.setMouseCoordinates(canvasUtil.mapToMouse(window.goalCoordinates));
         },
 
-        // Avoid collison point by ang
+        // Avoid collision point by ang
         // ang radians <= Math.PI (180deg)
         avoidCollisionPoint: function(collisionPoint, ang) {
             if (ang === undefined || ang > Math.PI) {
@@ -469,18 +475,18 @@ var bot = window.bot = (function() {
 
             if (window.visualDebugging) {
                 canvasUtil.drawLine({
-                        x: window.snake.xx,
-                        y: window.snake.yy
-                    },
+                    x: window.snake.xx,
+                    y: window.snake.yy
+                },
                     end,
                     'orange', 5);
                 canvasUtil.drawLine({
-                        x: window.snake.xx,
-                        y: window.snake.yy
-                    }, {
-                        x: collisionPoint.xx,
-                        y: collisionPoint.yy
-                    },
+                    x: window.snake.xx,
+                    y: window.snake.yy
+                }, {
+                    x: collisionPoint.xx,
+                    y: collisionPoint.yy
+                },
                     'red', 5);
             }
 
@@ -488,12 +494,12 @@ var bot = window.bot = (function() {
             var sin = Math.sin(ang);
 
             if (canvasUtil.isLeft({
-                    x: window.snake.xx,
-                    y: window.snake.yy
-                }, end, {
-                    x: collisionPoint.xx,
-                    y: collisionPoint.yy
-                })) {
+                x: window.snake.xx,
+                y: window.snake.yy
+            }, end, {
+                x: collisionPoint.xx,
+                y: collisionPoint.yy
+            })) {
                 sin = -sin;
             }
 
@@ -659,12 +665,12 @@ var bot = window.bot = (function() {
                 for (var i = 0; i < bot.collisionAngles.length; i++) {
                     if (bot.collisionAngles[i] !== undefined) {
                         canvasUtil.drawLine({
-                                x: window.snake.xx,
-                                y: window.snake.yy
-                            }, {
-                                x: bot.collisionAngles[i].x,
-                                y: bot.collisionAngles[i].y
-                            },
+                            x: window.snake.xx,
+                            y: window.snake.yy
+                        }, {
+                            x: bot.collisionAngles[i].x,
+                            y: bot.collisionAngles[i].y
+                        },
                             '#99ffcc', 2);
                     }
                 }
@@ -692,8 +698,6 @@ var bot = window.bot = (function() {
             if (bot.collisionPoints.length === 0) return false;
 
             for (var i = 0; i < bot.collisionPoints.length; i++) {
-                // -1 snake is special case for non snake object.
-
                 var collisionCircle = canvasUtil.circle(
                     bot.collisionPoints[i].xx,
                     bot.collisionPoints[i].yy,
@@ -706,14 +710,15 @@ var bot = window.bot = (function() {
                     return true;
                 }
 
+                // snake -1 is special case for non snake object.
                 if (bot.collisionPoints[i].snake !== -1) {
-                    var eHeadCircle = canvasUtil.circle(
+                    var enemyHeadCircle = canvasUtil.circle(
                         window.snakes[bot.collisionPoints[i].snake].xx,
                         window.snakes[bot.collisionPoints[i].snake].yy,
                         bot.collisionPoints[i].radius
                     );
 
-                    if (canvasUtil.circleIntersect(fullHeadCircle, eHeadCircle)) {
+                    if (canvasUtil.circleIntersect(fullHeadCircle, enemyHeadCircle)) {
                         if (window.snakes[bot.collisionPoints[i].snake].sp > 10) {
                             window.setAcceleration(1);
                         } else {
@@ -843,7 +848,7 @@ var bot = window.bot = (function() {
                 window.snake.xx - (bot.sectorBoxSide / 2),
                 window.snake.yy - (bot.sectorBoxSide / 2),
                 bot.sectorBoxSide, bot.sectorBoxSide);
-            if (window.visualDebugging) canvasUtil.drawRect(bot.sectorBox, '#c0c0c0', true, 0.1);
+            // if (window.visualDebugging) canvasUtil.drawRect(bot.sectorBox, '#c0c0c0', true, 0.1);
 
             bot.cos = Math.cos(window.snake.ang);
             bot.sin = Math.sin(window.snake.ang);
@@ -970,7 +975,7 @@ var userInterface = window.userInterface = (function() {
             var statsOverlay = document.createElement('div');
             statsOverlay.style.position = 'fixed';
             statsOverlay.style.left = '10px';
-            statsOverlay.style.top = '295px';
+            statsOverlay.style.top = '340px';
             statsOverlay.style.width = '140px';
             statsOverlay.style.height = '210px';
             // statsOverlay.style.background = 'rgba(0, 0, 0, 0.5)';
@@ -1013,7 +1018,13 @@ var userInterface = window.userInterface = (function() {
                 window.lbn.style.display = 'none';
             }
         },
-
+        removeLogo: function() {
+            if (typeof window.showlogo_iv !== 'undefined') {
+                window.ncka = window.lgss = window.lga = 1;
+                clearInterval(window.showlogo_iv);
+                showLogo(true);
+            }
+        },
         // Save variable to local storage
         savePreference: function(item, value) {
             window.localStorage.setItem(item, value);
@@ -1112,6 +1123,13 @@ var userInterface = window.userInterface = (function() {
                 if (e.keyCode === 72) {
                     userInterface.toggleOverlays();
                 }
+                // Letter 'B' to prompt for a custom background url
+                if (e.keyCode === 66) {
+                    var url = prompt('Please enter a background url:');
+                    if (url !== null) {
+                        canvasUtil.setBackground(url);
+                    }
+                }
                 // Letter 'O' to change rendermode (visual)
                 if (e.keyCode === 79) {
                     userInterface.toggleMobileRendering(!window.mobileRender);
@@ -1209,17 +1227,17 @@ var userInterface = window.userInterface = (function() {
         // Update stats overlay.
         updateStats: function() {
             var oContent = [];
+            var median;
 
             if (bot.scores.length === 0) return;
+            median = Math.round((bot.scores[Math.floor((bot.scores.length - 1) / 2)] +
+                     bot.scores[Math.ceil((bot.scores.length - 1) / 2)]) / 2);
 
-            oContent.push('<br/>------------------');
             oContent.push('games played: ' + bot.scores.length);
-            oContent.push('avg score: ' + Math.round(
-                bot.scores.reduce(function(a, b) {
-                    return a + b;
-                }) / (bot.scores.length)));
-            oContent.push('------------------');
-            oContent.push('top 10 scores:');
+            oContent.push('a: ' + Math.round(
+                bot.scores.reduce(function(a, b) { return a + b; }) / (bot.scores.length)) +
+                ' m: ' + median);
+
             for (var i = 0; i < bot.scores.length && i < 10; i++) {
                 oContent.push(i + 1 + '. ' + bot.scores[i]);
             }
@@ -1243,6 +1261,7 @@ var userInterface = window.userInterface = (function() {
             oContent.push('[Y] visual debugging: ' + ht(window.visualDebugging));
             oContent.push('[U] log debugging: ' + ht(window.logDebugging));
             oContent.push('[H] overlays');
+            oContent.push('[B] change background');
             oContent.push('[Mouse Wheel] zoom');
             oContent.push('[Z] reset zoom');
             oContent.push('[ESC] quick respawn');
@@ -1351,7 +1370,9 @@ var userInterface = window.userInterface = (function() {
                 y: window.mc.height / window.hh
             };
         },
-
+        // Handles the text color of the bot preferences
+        // enabled = green
+        // disabled = red
         handleTextColor: function(enabled) {
             return '<span style=\"color:' +
                 (enabled ? 'green;\">enabled' : 'red;\">disabled') + '</span>';
@@ -1428,11 +1449,7 @@ var userInterface = window.userInterface = (function() {
         userInterface.toggleMobileRendering(false);
     }
     // Remove laggy logo animation
-    if (typeof window.showlogo_iv !== 'undefined') {
-        window.ncka = window.lgss = window.lga = 1;
-        clearInterval(window.showlogo_iv);
-        showLogo(true);
-    }
+    userInterface.removeLogo();
     // Unblocks all skins without the need for FB sharing.
     window.localStorage.setItem('edttsg', '1');
 
