@@ -7,7 +7,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 /* 20160623 updated bookmarklet, so we still
     don't have to monkey about
 */
-version='1.2.6_bkmk_20160623150640';
+version='1.2.6_bkmk_20160623151127';
 /*
 Override bot options here
 Uncomment variables you wish to change from their default values
@@ -1207,10 +1207,12 @@ var userInterface = window.userInterface = (function() {
                 window.render_mode = 1;
                 window.want_quality = 0;
                 window.high_quality = false;
+                canvasUtil.setBackground('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
             } else {
                 window.render_mode = 2;
                 window.want_quality = 1;
                 window.high_quality = true;
+                canvasUtil.setBackground();
             }
         },
 
