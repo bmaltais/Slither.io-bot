@@ -4,10 +4,10 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-/* 20160527 created bookmarklet so that we 
+/* 20160623 updated bookmarklet, so we still
     don't have to monkey about
 */
-version='1.2.6_bkmk';
+version='1.2.6_bkmk_20160623150640';
 /*
 Override bot options here
 Uncomment variables you wish to change from their default values
