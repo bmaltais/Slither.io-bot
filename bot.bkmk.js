@@ -5,7 +5,7 @@ The MIT License (MIT)
  Copyright (c) 2016 Ermiya Eskandary & Théophile Cailliau and other contributors
  https://jmiller.mit-license.org/
 */
-version='1.2.0_bookmarklet'
+version='3.0.5_bookmarklet'
 // ==UserScript==
 // @name         Slither.io Bot Championship Edition
 // @namespace    https://github.com/j-c-m/Slither.io-bot
