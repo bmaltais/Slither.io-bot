@@ -5,7 +5,7 @@ The MIT License (MIT)
  Copyright (c) 2016 Ermiya Eskandary & Théophile Cailliau and other contributors
  https://jmiller.mit-license.org/
 */
-version='3.0.5_bookmarklet_b'
+version='3.0.5_bookmarklet_c'
 // ==UserScript==
 // @name         Slither.io Bot Championship Edition
 // @namespace    https://github.com/j-c-m/Slither.io-bot
@@ -1914,11 +1914,11 @@ var userInterface = window.userInterface = (function (window, document) {
                 // Letter 'L' to zoom out
                 if (e.keyCode === 76) {
                     console.log('zoomOut Log debugging set to: ' + window.gsc);
-                    canvas.zoomInOut(-1.1);
+                    canvas.zoomInOut(-10);
                 }
                 // Letter 'N' to zoom in
                 if (e.keyCode === 78) {
-                    canvas.zoomInOut(1.1);
+                    canvas.zoomInOut(10);
                     console.log('zoomIn Log debugging set to: ' + window.gsc);
                 }
                 // Letter 'Q' to quit to main menu
