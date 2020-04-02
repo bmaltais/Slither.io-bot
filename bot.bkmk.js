@@ -2013,7 +2013,7 @@ var userInterface = window.userInterface = (function (window, document) {
             oContent.push('[Y] visual debugging: ' + ht(window.visualDebugging));
             oContent.push('[U] log debugging: ' + ht(window.logDebugging));
             oContent.push('[Mouse Wheel] zoom');
-	    oContent.push('[N] zoom Nearer');
+            oContent.push('[N] zoom Nearer');
             oContent.push('[L] zoom Longer');
             oContent.push('[Z] reset zoom');
             oContent.push('[ESC] quick respawn');
