@@ -410,6 +410,7 @@ var bot = window.bot = (function (window) {
     return {
         isBotRunning: false,
         isBotEnabled: true,
+        isCircleDIsabled: false,
         stage: 'grow',
         collisionPoints: [],
         collisionAngles: [],
@@ -422,7 +423,7 @@ var bot = window.bot = (function (window) {
         currentFood: {},
         opt: {
             // target fps
-            targetFps: 20,
+            targetFps: 60,
             // size of arc for collisionAngles
             arcSize: Math.PI / 8,
             // radius multiple for circle intersects
@@ -1582,7 +1583,7 @@ var bot = window.bot = (function (window) {
         go: function () {
             bot.every();
 
-            if (bot.snakeLength < bot.opt.followCircleLength) {
+            if (bot.snakeLength < bot.opt.followCircleLength || bot.isCircleDisabled ) {
                 bot.stage = 'grow';
             }
 
@@ -1892,6 +1893,10 @@ var userInterface = window.userInterface = (function (window, document) {
                 if (e.keyCode === 79) {
                     userInterface.toggleMobileRendering(!window.mobileRender);
                 }
+                // Letter 'C' to increase collision detection radius
+                if (e.keyCode === 67) {
+                    bot.isCircleDisabled = !bot.isCircleDisabled;
+                }
                 // Letter 'A' to increase collision detection radius
                 if (e.keyCode === 65) {
                     bot.opt.radiusMult++;
@@ -2007,6 +2012,7 @@ var userInterface = window.userInterface = (function (window, document) {
 
             oContent.push('version: ' + version);
             oContent.push('[T] bot: ' + ht(bot.isBotEnabled));
+            oContent.push('[C] circle disabled: ' + ht(bot.isCircleDisabled));
             oContent.push('[O] mobile rendering: ' + ht(window.mobileRender));
             oContent.push('[A/S] radius multiplier: ' + bot.opt.radiusMult);
             oContent.push('[I] auto respawn: ' + ht(window.autoRespawn));
